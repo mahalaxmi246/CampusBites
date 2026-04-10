@@ -67,6 +67,35 @@
             <div class="live-indicator" id="live-indicator">
                 <span class="live-dot"></span> Live updates on
             </div>
+            
+            <!-- WAIT TIME PREDICTOR -->
+<div class="wait-time-card" id="wait-time-card">
+    <div class="wait-time-header">
+        <span>🤖 AI Wait Time Prediction</span>
+        <span class="confidence-badge" id="confidence-badge">Calculating...</span>
+    </div>
+    <div class="wait-time-body">
+        <div class="wait-time-number" id="wait-time-number">
+            <span id="wait-minutes">--</span>
+            <span class="wait-unit">mins</span>
+        </div>
+        <p class="wait-message" id="wait-message">Calculating your wait time...</p>
+    </div>
+    <div class="wait-time-footer">
+        <div class="wait-detail">
+            <span>Orders ahead</span>
+            <strong id="orders-ahead">--</strong>
+        </div>
+        <div class="wait-detail">
+            <span>Parallel slots</span>
+            <strong>3 🍳</strong>
+        </div>
+        <div class="wait-detail">
+            <span>Your items</span>
+            <strong id="my-cook-time">--</strong>
+        </div>
+    </div>
+</div>
 
             <div class="status-steps" id="status-steps">
                 <div class="step" id="step-placed">
@@ -116,7 +145,7 @@
                 </div>
             </div>
 
-            <a href="menu.html" class="btn" style="margin-top:20px; display:inline-block;">
+            <a href="menu.jsp" class="btn" style="margin-top:20px; display:inline-block;">
                 Order More
             </a>
 
@@ -124,7 +153,7 @@
     </section>
 
     <footer>
-        <p>© 2024 CampusBites | College Canteen System</p>
+        <p>© 2026 CampusBites | College Canteen System</p>
     </footer>
 
     <script src="js/cart.js"></script>
@@ -207,6 +236,48 @@
                     // Retry on error
                     setTimeout(pollStatus, 5000);
                 });
+        }
+        
+     // Poll wait time every 10 seconds
+        function pollWaitTime() {
+            fetch('WaitTimeServlet?orderId=' + orderId)
+                .then(res => res.json())
+                .then(data => {
+                    const card = document.getElementById('wait-time-card');
+
+                    if(data.status === 'Ready') {
+                        document.getElementById('wait-minutes').textContent = '0';
+                        document.getElementById('wait-message').textContent = 'Your order is Ready!';
+                        document.getElementById('confidence-badge').textContent = '✅ Done';
+                        document.getElementById('confidence-badge').style.background = '#d4edda';
+                        document.getElementById('confidence-badge').style.color = '#155724';
+                        document.getElementById('orders-ahead').textContent = '0';
+                        return;
+                    }
+
+                    document.getElementById('wait-minutes').textContent = data.waitTime;
+                    document.getElementById('wait-message').textContent = data.message;
+                    document.getElementById('orders-ahead').textContent = data.ordersAhead;
+
+                    const badge = document.getElementById('confidence-badge');
+                    badge.textContent = data.confidence + ' confidence';
+                    badge.style.background = data.confidence === 'High' ? '#d4edda' :
+                                            data.confidence === 'Medium' ? '#fff3cd' : '#f8d7da';
+                    badge.style.color = data.confidence === 'High' ? '#155724' :
+                                       data.confidence === 'Medium' ? '#856404' : '#721c24';
+
+                    document.getElementById('my-cook-time').textContent = data.waitTime + ' mins';
+
+                    if(data.status !== 'Ready') {
+                        setTimeout(pollWaitTime, 10000);
+                    }
+                })
+                .catch(() => setTimeout(pollWaitTime, 15000));
+        }
+
+        // Start wait time polling
+        if('<%= status %>' !== 'Ready') {
+            pollWaitTime();
         }
 
         // Set initial UI state

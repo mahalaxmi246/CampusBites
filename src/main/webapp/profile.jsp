@@ -123,7 +123,7 @@
     </section>
 
     <footer>
-        <p>© 2024 CampusBites | College Canteen System</p>
+        <p>© 2026 CampusBites | College Canteen System</p>
     </footer>
 
     <script src="js/cart.js"></script>

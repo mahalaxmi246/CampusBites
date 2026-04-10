@@ -70,7 +70,7 @@ public class OrderServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("cart.html?error=order");
+            response.sendRedirect("cart.jsp?error=order");
         }
     }
 }

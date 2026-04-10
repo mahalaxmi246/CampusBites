@@ -68,7 +68,7 @@
             </div>
 
             <div class="confirm-actions">
-                <a href="menu.html" class="btn">Order More</a>
+                <a href="menu.jsp" class="btn">Order More</a>
                 <a href="order-status.jsp?orderId=<%= orderId %>"
                    class="btn-outline">Track Order</a>
             </div>
@@ -77,7 +77,7 @@
     </section>
 
     <footer>
-        <p>© 2024 CampusBites | College Canteen System</p>
+        <p>© 2026 CampusBites | College Canteen System</p>
     </footer>
 
     <script src="js/cart.js"></script>

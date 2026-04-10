@@ -1203,6 +1203,86 @@ nav a:hover {
     from { width: 0%; }
     to { width: 100%; }
 }
+/* ===== AI WAIT TIME PREDICTOR ===== */
+.wait-time-card {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    color: white;
+    text-align: left;
+}
+
+.wait-time-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.confidence-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.wait-time-body {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.wait-time-number {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.wait-time-number span:first-child {
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.wait-unit {
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+.wait-message {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.wait-time-footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.wait-detail {
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.wait-detail span {
+    display: block;
+    margin-bottom: 4px;
+    opacity: 0.7;
+}
+
+.wait-detail strong {
+    font-size: 16px;
+}
 .feature-card {
     background: white;
     border-radius: 15px;

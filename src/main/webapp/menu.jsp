@@ -54,7 +54,7 @@
     <h3>Mini Pizza</h3>
     <p>Cheesy mini pizza with tomato sauce</p>
     <div class="menu-footer">
-        <span class="price">Rs.85</span>
+        <span class="price">Rs.35</span>
         <button class="add-btn" onclick="addToCart('Mini Pizza', 35)">Add +</button>
     </div>
 </div>
@@ -125,7 +125,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2024 CampusBites | College Canteen System</p>
+        <p>&copy; 2026 CampusBites | College Canteen System</p>
     </footer>
 
     <script src="js/cart.js"></script>

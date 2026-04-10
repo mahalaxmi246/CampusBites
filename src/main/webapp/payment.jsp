@@ -196,7 +196,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 CampusBites | College Canteen System</p>
+        <p>&copy; 2026 CampusBites | College Canteen System</p>
     </footer>
 
     <script src="js/cart.js"></script>
