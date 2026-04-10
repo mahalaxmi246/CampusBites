@@ -1,7 +1,7 @@
 # 🍕 CampusBites - College Canteen Food Ordering System
 
 
-> A full-stack college canteen food ordering system where students can browse the menu, add items to cart, pay via UPI, get a token number and track their order in real-time — without standing in queue!
+> A full-stack food ordering platform built for college canteens, enabling users to browse menus, manage carts, and place orders with simulated payment integration. The system implements real-time order tracking using HTTP polling, token-based queue management, and an admin dashboard for live order monitoring, enhancing user experience by eliminating physical queues and reducing wait times.
 
 ---
 
