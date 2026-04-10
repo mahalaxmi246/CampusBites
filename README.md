@@ -1,6 +1,9 @@
 # 🍕 CampusBites - College Canteen Food Ordering System
 
-
+![Java](https://img.shields.io/badge/Java-11+-orange)
+![Tomcat](https://img.shields.io/badge/Tomcat-9.0-yellow)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
 > A full-stack food ordering platform built for college canteens, enabling users to browse menus, manage carts, and place orders with simulated payment integration. The system implements real-time order tracking using HTTP polling, token-based queue management, and an admin dashboard for live order monitoring, enhancing user experience by eliminating physical queues and reducing wait times.
 
 ---
