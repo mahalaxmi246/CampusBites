@@ -1,9 +1,5 @@
 # 🍕 CampusBites - College Canteen Food Ordering System
 
-![CampusBites](https://img.shields.io/badge/CampusBites-Food%20Ordering%20System-ff6b35?style=for-the-badge&logo=java)
-![Java](https://img.shields.io/badge/Java-Servlets%20%26%20JSP-red?style=for-the-badge&logo=java)
-![MySQL](https://img.shields.io/badge/MySQL-Database-blue?style=for-the-badge&logo=mysql)
-![Tomcat](https://img.shields.io/badge/Apache-Tomcat%209.0-yellow?style=for-the-badge&logo=apachetomcat)
 
 > A full-stack college canteen food ordering system where students can browse the menu, add items to cart, pay via UPI, get a token number and track their order in real-time — without standing in queue!
 
