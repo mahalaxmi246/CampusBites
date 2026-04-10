@@ -9,6 +9,34 @@
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](screenshots/home.png)
+
+### 🍔 Menu Page
+![Menu](screenshots/menu.png)
+
+### 🛒 Cart Page
+![Cart](screenshots/cart.png)
+
+### 💳 Payment Page
+![Payment](screenshots/payment.png)
+
+### 📋 Order Status (Real-time)
+![Order Status](screenshots/order-status.png)
+
+### 👨‍🍳 Admin Dashboard
+![Admin](screenshots/admin.png)
+
+### 👤 Profile Page
+![Profile](screenshots/profile.png)
+
+### 📋 Order History
+![Order History](screenshots/order-history.png)
+
+---
+
 ## 🌟 Features
 
 ### 👤 User Features
@@ -158,7 +186,7 @@ Download these 2 JAR files:
 - Extract and find `mysql-connector-j-9.6.0.jar`
 
 **JAR 2 — JSON Library:**
-- Download from: https://repo1.maven.org/maven2/org/json/json/20240303/json-20240303.jar
+- Download directly: https://repo1.maven.org/maven2/org/json/json/20240303/json-20240303.jar
 
 **Add both JARs to project:**
 1. Copy both JAR files
@@ -186,8 +214,7 @@ Download these 2 JAR files:
 1. Go to **Window → Show View → Servers**
 2. Double click **Tomcat v9.0**
 3. Click **Stop** first if running
-4. Under **Server Locations** select:
-   - ✅ **Use Tomcat installation**
+4. Under **Server Locations** select **Use Tomcat installation**
 5. Save **(Ctrl+S)**
 
 ### 3.3 Add project to Tomcat
@@ -228,10 +255,7 @@ http://localhost:8080/CampusBites/index.jsp
 ### As Admin:
 1. Go to `http://localhost:8080/CampusBites/admin.jsp`
 2. View all incoming orders in real-time
-3. Update order status using the dropdown:
-   - **Placed** → Order received
-   - **Preparing** → Being cooked
-   - **Ready** → Student notified!
+3. Update order status using the dropdown
 4. Dashboard auto-refreshes every 5 seconds!
 
 ---
@@ -244,35 +268,34 @@ CampusBites/
 │   └── main/
 │       ├── java/
 │       │   └── com/campusbites/
-│       │       ├── DBConnection.java          ← Database connection
-│       │       ├── RegisterServlet.java       ← User registration
-│       │       ├── LoginServlet.java          ← User login
-│       │       ├── LogoutServlet.java         ← User logout
-│       │       ├── OrderServlet.java          ← Place order
-│       │       ├── UpdateOrderServlet.java    ← Admin update status
-│       │       └── GetOrderStatusServlet.java ← Real-time polling
+│       │       ├── DBConnection.java
+│       │       ├── RegisterServlet.java
+│       │       ├── LoginServlet.java
+│       │       ├── LogoutServlet.java
+│       │       ├── OrderServlet.java
+│       │       ├── UpdateOrderServlet.java
+│       │       └── GetOrderStatusServlet.java
 │       └── webapp/
-│           ├── css/
-│           │   └── style.css         ← All styles
-│           ├── js/
-│           │   └── cart.js           ← Cart logic
-│           ├── index.jsp             ← Home page
-│           ├── menu.jsp              ← Menu page
-│           ├── cart.jsp              ← Cart page
-│           ├── Login.jsp             ← Login page
-│           ├── register.html         ← Register page
-│           ├── navbar.jsp            ← Shared navbar
-│           ├── profile.jsp           ← User profile
-│           ├── payment.jsp           ← Payment page
-│           ├── order-confirmation.jsp← Order confirmation
-│           ├── order-status.jsp      ← Real-time tracking
-│           ├── order-history.jsp     ← Past orders
-│           ├── admin.jsp             ← Admin dashboard
+│           ├── css/style.css
+│           ├── js/cart.js
+│           ├── index.jsp
+│           ├── menu.jsp
+│           ├── cart.jsp
+│           ├── Login.jsp
+│           ├── register.html
+│           ├── navbar.jsp
+│           ├── profile.jsp
+│           ├── payment.jsp
+│           ├── order-confirmation.jsp
+│           ├── order-status.jsp
+│           ├── order-history.jsp
+│           ├── admin.jsp
 │           └── WEB-INF/
 │               ├── lib/
 │               │   ├── mysql-connector-j-9.6.0.jar
 │               │   └── json-20240303.jar
 │               └── web.xml
+├── screenshots/
 └── pom.xml
 ```
 
@@ -281,116 +304,45 @@ CampusBites/
 ## 🔧 Common Issues & Fixes
 
 ### ❌ Issue 1 — HTTP 404 Not Found
-```
-The requested resource is not available
-```
-**Fix:**
-1. Right click Tomcat → **Clean**
-2. Right click project → **Run As → Run on Server**
-3. Try URL: `http://localhost:8080/CampusBites/index.jsp`
-
----
+**Fix:** Right click Tomcat → Clean → Run As → Run on Server
 
 ### ❌ Issue 2 — Database Connection Error
-```
-Communications link failure
-```
-**Fix:**
-1. Make sure MySQL service is running
-2. Open **Services** → Start **MySQL80**
-3. Check password in `DBConnection.java` matches your MySQL password
-
----
+**Fix:** Check password in `DBConnection.java` matches your MySQL root password. Also make sure MySQL service is running (search "Services" in Windows → Start MySQL80)
 
 ### ❌ Issue 3 — Port 8080 Already in Use
-```
-Address already in use: 8080
-```
-**Fix:**
-1. Double click Tomcat in Servers tab
-2. Change HTTP port from **8080** to **8081**
-3. Save and restart
-4. Access via: `http://localhost:8081/CampusBites/index.jsp`
-
----
+**Fix:** Double click Tomcat → Change port to 8081 → Access via `http://localhost:8081/CampusBites/index.jsp`
 
 ### ❌ Issue 4 — Server Location Greyed Out
-**Fix:**
-1. Right click Tomcat → **Stop**
-2. Right click Tomcat → **Add and Remove** → Remove CampusBites
-3. Double click Tomcat → Now change Server Location
-4. Re-add CampusBites → Start
+**Fix:** Stop Tomcat → Remove project → Change location → Re-add project → Start
 
----
-
-### ❌ Issue 5 — JAR Not Found / Build Error
-**Fix:**
-1. Right click JAR in WEB-INF/lib
-2. **Build Path → Add to Build Path**
-3. Right click project → **Maven → Update Project**
-
----
+### ❌ Issue 5 — JAR Not Found
+**Fix:** Right click JAR → Build Path → Add to Build Path
 
 ### ❌ Issue 6 — Emojis Showing as Boxes
-**Fix:**
-1. **Window → Preferences → General → Workspace**
-2. Set **Text file encoding** to **UTF-8**
-3. Restart Tomcat
+**Fix:** Window → Preferences → General → Workspace → Set encoding to UTF-8 → Restart Tomcat
 
 ---
 
 ## 🏗️ System Design
 
 ```
-┌─────────────────────────────────────────────┐
-│              Student Browser                 │
-│         (HTML + CSS + JavaScript)            │
-└──────────────────┬──────────────────────────┘
-                   │ HTTP Request
-                   ▼
-┌─────────────────────────────────────────────┐
-│         Apache Tomcat 9.0 (Port 8080)        │
-│                                             │
-│  ┌─────────────┐    ┌──────────────────┐   │
-│  │   Servlets  │    │    JSP Pages     │   │
-│  │  (Business  │◄──►│  (Presentation)  │   │
-│  │   Logic)    │    │                  │   │
-│  └──────┬──────┘    └──────────────────┘   │
-│         │                                   │
-└─────────┼───────────────────────────────────┘
-          │ JDBC
-          ▼
-┌─────────────────────────────────────────────┐
-│              MySQL Database                  │
-│  users | menu_items | orders | order_items  │
-└─────────────────────────────────────────────┘
+Student Browser (HTML + CSS + JS)
+         |
+         | HTTP Request
+         v
+Apache Tomcat 9.0 (Port 8080)
+    |              |
+ Servlets       JSP Pages
+ (Logic)     (Presentation)
+         |
+         | JDBC
+         v
+    MySQL Database
+ users | menu_items | orders | order_items
 
-Real-time Flow:
-Browser → polls GetOrderStatusServlet every 3 seconds
-Admin   → dashboard auto-refreshes every 5 seconds
+Real-time: Browser polls every 3 seconds
+Admin: Auto-refreshes every 5 seconds
 ```
-
----
-
-## 🗺️ Page Flow
-
-```
-index.jsp → menu.jsp → cart.jsp → payment.jsp → order-confirmation.jsp
-                                                        ↓
-                                               order-status.jsp (real-time)
-                                               order-history.jsp (all orders)
-                                               profile.jsp (user details)
-                                               admin.jsp (manage orders)
-```
-
----
-
-## 👩‍💻 Developer
-
-**Mahalaxmi Somisetty**
-- GitHub: https://github.com/mahalaxmi246
-- Project: CampusBites - College Canteen Food Ordering System
-- College: VNRVJIET | IT - R22
 
 ---
 
@@ -405,6 +357,15 @@ This project covers the following weekly topics from the IT-R22 syllabus:
 | Week 4 | Shopping Cart | cart.jsp, cart.js |
 | Week 8 | Servlet for data retrieval | GetOrderStatusServlet.java |
 | Week 9 | User Authentication | LoginServlet, LogoutServlet |
+
+---
+
+## 👩‍💻 Developer
+
+**Mahalaxmi Somisetty**
+- GitHub: https://github.com/mahalaxmi246
+- Project: CampusBites - College Canteen Food Ordering System
+- College: VNRVJIET | IT - R22 | 2026
 
 ---
 
