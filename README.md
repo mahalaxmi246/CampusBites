@@ -4,6 +4,7 @@
 ![Tomcat](https://img.shields.io/badge/Tomcat-9.0-yellow)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+
 > A full-stack food ordering platform built for college canteens, enabling users to browse menus, manage carts, and place orders with simulated payment integration. The system implements real-time order tracking using HTTP polling, token-based queue management, and an admin dashboard for live order monitoring, enhancing user experience by eliminating physical queues and reducing wait times.
 
 ---
@@ -60,7 +61,6 @@
 (Note: Admin access is currently open for demonstration purposes)
 
 ---
-
 
 ## 🛠️ Tech Stack
 
@@ -147,17 +147,57 @@ INSERT INTO menu_items (name, description, price, category) VALUES
 ('Juice', 'Fresh seasonal fruit juice', 30, 'drinks');
 ```
 
-### 1.2 Update your MySQL password in the project
+---
 
-Open this file:
+### 1.2 Set Database Password Securely (via CMD)
+
+> ⚠️ This project uses **environment variables** to keep the database password secure.
+> You do NOT need to change any code. Just follow the steps below carefully.
+
+**Step 1 — Open Command Prompt as Administrator**
+
 ```
-src/main/java/com/campusbites/DBConnection.java
+Press Windows key → Type "cmd" → Right click → "Run as Administrator"
 ```
 
-Find this line and replace with your MySQL root password:
-```java
-private static final String PASSWORD = "YOUR_MYSQL_PASSWORD";
+**Step 2 — Set the environment variables**
+
+```cmd
+setx DB_URL "jdbc:mysql://localhost:3306/campusbites"
+setx DB_USER "root"
+setx DB_PASSWORD "your_mysql_password_here"
 ```
+
+> 🔁 Replace `your_mysql_password_here` with your actual MySQL root password
+> (This is the password you set when you installed MySQL)
+
+**Step 3 — Verify they are set correctly**
+
+Close the current CMD window, open a new one (as Admin), and run:
+
+```cmd
+echo %DB_URL%
+echo %DB_USER%
+echo %DB_PASSWORD%
+```
+
+You should see output like this:
+```
+jdbc:mysql://localhost:3306/campusbites
+root
+your_mysql_password_here
+```
+
+> ⚠️ If you see blank lines — close CMD, reopen as Admin, and run the `setx` commands again.
+
+**Step 4 — Restart everything after setting variables**
+
+This step is MANDATORY. Environment variables only apply to new processes:
+
+- ❌ Close Eclipse completely
+- ❌ Close all Command Prompt windows
+- ✅ Reopen Eclipse
+- ✅ Start Tomcat again from inside Eclipse
 
 ---
 
@@ -308,19 +348,34 @@ CampusBites/
 ### ❌ Issue 1 — HTTP 404 Not Found
 **Fix:** Right click Tomcat → Clean → Run As → Run on Server
 
-### ❌ Issue 2 — Database Connection Error
-**Fix:** Check password in `DBConnection.java` matches your MySQL root password. Also make sure MySQL service is running (search "Services" in Windows → Start MySQL80)
+### ❌ Issue 2 — Database Connection Error / DB_PASSWORD is null
+**Fix:** This means the environment variable is not set or Eclipse wasn't restarted after setting it.
+1. Open CMD as Administrator
+2. Run:
+```cmd
+setx DB_PASSWORD "your_mysql_password_here"
+```
+3. Close Eclipse completely → Reopen → Restart Tomcat
 
-### ❌ Issue 3 — Port 8080 Already in Use
+### ❌ Issue 3 — `echo %DB_PASSWORD%` shows blank
+**Fix:** Close CMD, reopen as Administrator, run the `setx` command again, then open a fresh CMD to verify.
+
+### ❌ Issue 4 — MySQL connection refused
+**Fix:** MySQL service is not running.
+```
+Press Windows key → Search "Services" → Find MySQL80 → Right click → Start
+```
+
+### ❌ Issue 5 — Port 8080 Already in Use
 **Fix:** Double click Tomcat → Change port to 8081 → Access via `http://localhost:8081/CampusBites/index.jsp`
 
-### ❌ Issue 4 — Server Location Greyed Out
+### ❌ Issue 6 — Server Location Greyed Out
 **Fix:** Stop Tomcat → Remove project → Change location → Re-add project → Start
 
-### ❌ Issue 5 — JAR Not Found
+### ❌ Issue 7 — JAR Not Found
 **Fix:** Right click JAR → Build Path → Add to Build Path
 
-### ❌ Issue 6 — Emojis Showing as Boxes
+### ❌ Issue 8 — Emojis Showing as Boxes
 **Fix:** Window → Preferences → General → Workspace → Set encoding to UTF-8 → Restart Tomcat
 
 ---
@@ -345,6 +400,8 @@ Apache Tomcat 9.0 (Port 8080)
 Real-time: Browser polls every 3 seconds
 Admin: Auto-refreshes every 5 seconds
 ```
+
+---
 
 ## 🚀 Future Enhancements
 - 🔐 Role-based authentication (admin/user separation)
