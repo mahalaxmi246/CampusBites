@@ -1,6 +1,28 @@
+# Build output
 target/
+build/
 *.class
+*.jar
+*.war
+
+# Logs & temp
 *.log
 *.tmp
+
+# Eclipse IDE files
+.settings/
+.classpath
+.project
+.metadata/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Environment/secrets (never commit these)
+.env
+db.properties
+secrets.properties
+
+# Node (not needed for Java but harmless)
 node_modules/
