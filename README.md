@@ -1,7 +1,10 @@
 # 🍕 CampusBites - College Canteen Food Ordering System
 
-
-> A full-stack college canteen food ordering system where students can browse the menu, add items to cart, pay via UPI, get a token number and track their order in real-time — without standing in queue!
+![Java](https://img.shields.io/badge/Java-11+-orange)
+![Tomcat](https://img.shields.io/badge/Tomcat-9.0-yellow)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+> A full-stack food ordering platform built for college canteens, enabling users to browse menus, manage carts, and place orders with simulated payment integration. The system implements real-time order tracking using HTTP polling, token-based queue management, and an admin dashboard for live order monitoring, enhancing user experience by eliminating physical queues and reducing wait times.
 
 ---
 
@@ -39,8 +42,8 @@
 - ✅ Register & Login with session management
 - ✅ Browse menu with category filters (Snacks, Meals, Drinks)
 - ✅ Add items to cart with quantity control
-- ✅ Dummy UPI / Card / Cash payment
-- ✅ Real-time order status tracking (auto updates every 3 seconds!)
+- ✅ Simulated payment system (UPI / Card / Cash)
+- ✅ Real-time order status tracking using periodic HTTP polling (updates every 3 seconds)
 - ✅ Unique token number for each order
 - ✅ Queue position — see how many orders are ahead of you
 - ✅ Order history — view all past orders
@@ -51,10 +54,13 @@
 - ✅ Admin dashboard with live order stats
 - ✅ View all orders with status badges
 - ✅ Update order status (Placed → Preparing → Ready)
-- ✅ Auto refreshes every 5 seconds
+- ✅ Auto-refreshes dashboard every 5 seconds
 - ✅ Total orders, placed, preparing, ready counts
 
+(Note: Admin access is currently open for demonstration purposes)
+
 ---
+
 
 ## 🛠️ Tech Stack
 
@@ -339,6 +345,13 @@ Apache Tomcat 9.0 (Port 8080)
 Real-time: Browser polls every 3 seconds
 Admin: Auto-refreshes every 5 seconds
 ```
+
+## 🚀 Future Enhancements
+- 🔐 Role-based authentication (admin/user separation)
+- ⚡ Replace polling with WebSockets for real-time updates
+- 💳 Integrate real payment gateway (Razorpay/Stripe)
+- 📱 Convert frontend to React for better UI/UX
+- 📊 Add analytics dashboard for admin insights
 
 ---
 
